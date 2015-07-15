@@ -51,7 +51,6 @@ public class Window extends JPanel implements ActionListener, MouseListener, Mou
         frame.setSize(800, 600);
         frame.setTitle("Life Game");
         frame.getRootPane().setDoubleBuffered(true);
-        frame.setVisible(true);
 
         randomButton = new JButton("Random Generate");
         randomButton.addActionListener(this);
@@ -107,6 +106,8 @@ public class Window extends JPanel implements ActionListener, MouseListener, Mou
 
         addMouseListener(this);
         addMouseMotionListener(this);
+
+        frame.setVisible(true);
 
         frame.repaint();
     }
@@ -193,8 +194,7 @@ public class Window extends JPanel implements ActionListener, MouseListener, Mou
 
     public void paintComponent(Graphics g0){
         Graphics2D g = (Graphics2D) g0;
-        xTextField.setText(String.valueOf(field.size.width));
-        yTextField.setText(String.valueOf(field.size.height));
+
         int sellSize = this.getSize().height/field.size.height;
 
         for(int y=0;y<field.size.height;++y) {

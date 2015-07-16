@@ -24,6 +24,8 @@ public class Window extends JPanel implements ActionListener, MouseListener, Mou
     private JTextField xTextField;
     private JLabel yLabel;
     private JTextField yTextField;
+    private JLabel delayLabel;
+    private JTextField delayTextField;
     private JButton readButton;
     private JButton clearButton;
 
@@ -75,6 +77,8 @@ public class Window extends JPanel implements ActionListener, MouseListener, Mou
         xTextField = new JTextField(10);
         yLabel = new JLabel("y value");
         yTextField = new JTextField(10);
+        delayLabel = new JLabel("delay value");
+        delayTextField = new JTextField(10);
         readButton = new JButton("Reflection");
         readButton.addActionListener(this);
 
@@ -82,10 +86,13 @@ public class Window extends JPanel implements ActionListener, MouseListener, Mou
         textPane.add(xTextField);
         textPane.add(yLabel);
         textPane.add(yTextField);
+        textPane.add(delayLabel);
+        textPane.add(delayTextField);
         textPane.add(readButton);
 
         xTextField.setText(String.valueOf(field.size.width));
         yTextField.setText(String.valueOf(field.size.height));
+        delayTextField.setText(String.valueOf(timer.getDelay()));
 
         menubar.add(menuFile);
         menuFile.add(menuItemSave);
@@ -134,6 +141,7 @@ public class Window extends JPanel implements ActionListener, MouseListener, Mou
         }
         if(event.getSource() == readButton){
             field.SetSize(Integer.parseInt(xTextField.getText()), Integer.parseInt(yTextField.getText()));
+            timer.setDelay(Integer.parseInt(delayTextField.getText()));
         }
         if(event.getSource() == clearButton){
             field.Clear();
